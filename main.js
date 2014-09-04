@@ -111,16 +111,6 @@ define(function (require) {
                         type: CodeInspection.Type.WARNING
                     });
 
-                } else {
-
-                    // JSLint uses null to indicate an early termination value,
-                    // so if we didn't get a result, we can assume that the linting
-                    // has halted.
-                    result.aborted = true;
-                    result.errors.push({
-                        type: CodeInspection.Type.META
-                    });
-
                 }
 
             }
