@@ -50,6 +50,11 @@ define(function (require) {
             CodeInspection.requestRun(JSLINT_NAME);
         });
 
+    preferences.definePreference('lintWSLines', 'boolean', true)
+        .on('change', function () {
+            CodeInspection.requestRun(JSLINT_NAME);
+        });
+
     /**
      * Retrieves the number of spaces used by the editor as an indent for a given path, regardless of
      * whether TAB or SPACE characters are used.
@@ -70,7 +75,9 @@ define(function (require) {
      * @return {object} - Linting results.
      */
     function lintFile(text, path) {
-        text = text.replace(/^[ \t]+$/gm, "");
+        if (!preferences.get('lintWSLines')) {
+            text = text.replace(/^[ \t]+$/gm, "");
+        }
 
         var options = preferences.get('options'),
             errorIndex,
