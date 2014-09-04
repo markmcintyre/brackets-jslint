@@ -1,0 +1,14 @@
+{
+    "name": "markmcintyre.jslint",
+    "title": "JSLint",
+    "description": "Adds JSLint reporting to Brackets.",
+    "homepage": "https://github.com/markmcintyre/brackets-jslint",
+    "version": "1.0.0",
+    "keywords": ["jslint", "linting", "linter","lint"],
+    "categories": "linting",
+    "author": "Mark McIntyre",
+    "license": "MIT",
+    "engines": {
+        "brackets": ">=0.42.0"
+    }
+}
