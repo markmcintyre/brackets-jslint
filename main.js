@@ -70,6 +70,7 @@ define(function (require) {
      * @return {object} - Linting results.
      */
     function lintFile(text, path) {
+        text = text.replace(/^[ \t]+$/gm, "");
 
         var options = preferences.get('options'),
             errorIndex,
