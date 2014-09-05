@@ -75,7 +75,7 @@ define(function (require) {
      * @return {object} - Linting results.
      */
     function lintFile(text, path) {
-        if (!preferences.get('skipBlankLines')) {
+        if (preferences.get('skipBlankLines')) {
             text = text.replace(/^[ \t]+$/gm, '');
         }
 
