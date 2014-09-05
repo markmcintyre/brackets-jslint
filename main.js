@@ -50,7 +50,7 @@ define(function (require) {
             CodeInspection.requestRun(JSLINT_NAME);
         });
 
-    preferences.definePreference('lintWSLines', 'boolean', true)
+    preferences.definePreference('skipBlankLines', 'boolean', false)
         .on('change', function () {
             CodeInspection.requestRun(JSLINT_NAME);
         });
@@ -75,8 +75,8 @@ define(function (require) {
      * @return {object} - Linting results.
      */
     function lintFile(text, path) {
-        if (!preferences.get('lintWSLines')) {
-            text = text.replace(/^[ \t]+$/gm, "");
+        if (!preferences.get('skipBlankLines')) {
+            text = text.replace(/^[ \t]+$/gm, '');
         }
 
         var options = preferences.get('options'),
