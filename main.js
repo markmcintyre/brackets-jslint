@@ -50,6 +50,11 @@ define(function (require) {
             CodeInspection.requestRun(JSLINT_NAME);
         });
 
+    preferences.definePreference('skipBlankLines', 'boolean', false)
+        .on('change', function () {
+            CodeInspection.requestRun(JSLINT_NAME);
+        });
+
     /**
      * Retrieves the number of spaces used by the editor as an indent for a given path, regardless of
      * whether TAB or SPACE characters are used.
@@ -70,6 +75,9 @@ define(function (require) {
      * @return {object} - Linting results.
      */
     function lintFile(text, path) {
+        if (preferences.get('skipBlankLines')) {
+            text = text.replace(/^[ \t]+$/gm, '');
+        }
 
         var options = preferences.get('options'),
             errorIndex,
